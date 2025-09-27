@@ -1,0 +1,199 @@
+.section{
+  max-width: 400px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  display: inline-block;
+}
+.btn.primary {
+  background: #ffd700;
+  color: #000;
+}
+.btn.secondary {
+  border: 2px solid #ffd700;
+  color: #000;
+}
+.btn.big {
+  font-size: 1.2rem;
+  padding: 15px 40px;
+  background: #fff;
+  color: #000;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Inputs */
+input, select, textarea {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 90%;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #ffd700;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+}
+
+/* Errors */
+.error {
+  color: rgb(211, 0, 0);
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Password toggle */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-container input {
+  flex: 1;
+  padding-right: 40px;
+}
+.toggle-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+.preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+}
+.section {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  background-color: #fafafa;
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.2rem;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.required {
+  color: #d9534f;
+}
+
+.btn.primary {
+  width: 100%;
+  background: #007bff;
+  border: none;
+  padding: 0.75rem;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.primary:disabled {
+  background: #a0c4ff;
+  cursor: not-allowed;
+}
+
+.profile-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}

@@ -1,0 +1,133 @@
+<div class="section">
+  <h2 class="title">Create Your Account</h2>
+  <p class="subtitle">Please fill in the details below to sign up.</p>
+
+  <form (ngSubmit)="register()" #signupForm="ngForm" class="form-container">
+
+    <!-- Full Name -->
+    <div class="form-group">
+      <label for="name">Full Name <span class="required">*</span></label>
+      <div class="input-wrapper">
+        <span class="icon">👤</span>
+        <input
+          id="name"
+          [(ngModel)]="name"
+          name="name"
+          placeholder="e.g. John Doe"
+          required
+          #nameInput="ngModel"
+        />
+      </div>
+      <small class="hint">Enter your first and last name.</small>
+      <div *ngIf="nameInput.invalid && nameInput.touched" class="error">
+        Please enter your full name.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email Address <span class="required">*</span></label>
+      <div class="input-wrapper">
+        <span class="icon">📧</span>
+        <input
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          type="email"
+          placeholder="e.g. johndoe@example.com"
+          required
+          email
+          #emailInput="ngModel"
+        />
+      </div>
+      <small class="hint">Use a valid email — you’ll use this to log in.</small>
+      <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password <span class="required">*</span></label>
+      <div class="password-container input-wrapper">
+        <span class="icon">🔒</span>
+        <input
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Create a strong password"
+          [type]="showPassword ? 'text' : 'password'"
+          minlength="6"
+          required
+          #passwordInput="ngModel"
+        />
+        <button type="button" class="toggle-btn" (click)="showPassword = !showPassword" aria-label="Toggle password visibility">
+          <span *ngIf="!showPassword">👁️</span>
+          <span *ngIf="showPassword">🙈</span>
+        </button>
+      </div>
+      <small class="hint">At least 6 characters, include letters and numbers.</small>
+      <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+      <div class="password-container input-wrapper">
+        <span class="icon">🔒</span>
+        <input
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          placeholder="Re-enter your password"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          required
+          #confirmPasswordInput="ngModel"
+        />
+        <button type="button" class="toggle-btn" (click)="showConfirmPassword = !showConfirmPassword" aria-label="Toggle confirm password visibility">
+          <span *ngIf="!showConfirmPassword">👁️</span>
+          <span *ngIf="showConfirmPassword">🙈</span>
+        </button>
+      </div>
+      <div *ngIf="password && confirmPassword && password !== confirmPassword" class="error">
+        Passwords do not match.
+      </div>
+    </div>
+
+    <!-- Profile Photo -->
+    <div class="form-group">
+      <label>Profile Photo (Optional)</label>
+      <div class="profile-photo">
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          class="file-input"
+        />
+        <img
+          *ngIf="photoPreview"
+          [src]="photoPreview"
+          alt="Preview"
+          class="preview"
+        />
+      </div>
+      <small class="hint">Upload a clear photo for your profile.</small>
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="btn primary"
+      [disabled]="signupForm.invalid || password !== confirmPassword"
+    >
+      Sign Up
+    </button>
+
+    <p class="login-link">
+      Already have an account?
+      <a routerLink="/login">Log in here</a>
+    </p>
+  </form>
+</div>

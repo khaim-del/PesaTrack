@@ -1,0 +1,29 @@
+<div class="folder-view">
+  <button (click)="goBack()">⬅ Back to Folders</button>
+
+  <h2 *ngIf="folderId">Folder: {{ folderId }}</h2>
+  <p *ngIf="folderId">Total: {{ total }}</p>
+
+  <!-- 🔹 Only show form if it's today's folder -->
+  <div *ngIf="isTodayFolder" class="add-entry">
+    <h3>Add Entry</h3>
+    <input [(ngModel)]="newEntry.name" placeholder="Name" />
+    <input [(ngModel)]="newEntry.amount" type="number" placeholder="Amount" />
+    <input [(ngModel)]="newEntry.note" placeholder="Note" />
+    <button (click)="addEntry()">Add</button>
+  </div>
+
+  <h3>Entries</h3>
+  <ul *ngIf="entries.length > 0; else noEntries">
+    <li *ngFor="let entry of entries">
+      {{ entry.name }} - {{ entry.amount }} ({{ entry.note }})
+      
+      <!-- 🔹 Show delete button only for today's folder -->
+      <button *ngIf="isTodayFolder" (click)="deleteEntry(entry.id)">❌</button>
+    </li>
+  </ul>
+
+  <ng-template #noEntries>
+    <p>No entries yet.</p>
+  </ng-template>
+</div>

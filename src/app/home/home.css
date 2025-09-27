@@ -1,0 +1,101 @@
+.container {
+  width: 100%;
+  margin: 0px;
+  background: white;
+  padding: 0px;
+  border-radius: 12px;
+  position: relative;
+  padding-bottom: 40px;
+
+}
+
+.section1{
+  background: rgba(0,0,0,0.6);
+  color: white;
+  margin: 0px;
+  height: 240px;
+  position: bottom;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    font-size: medium;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 8px 12px;
+}
+
+nav a:hover {
+    color: #d8b800;
+    transform: scale(1.1);
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  padding: 10px;
+  margin: 0px;
+  color: #ffd700;
+  text-align: center;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none; 
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+li:last-child {
+  border-bottom: none;
+}
+
+.sectionz{
+  background: rgb(48, 47, 47);
+  color:  #ffd700;
+  margin: 0%;
+  padding: 20px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 28px;
+}
+h5{
+  margin: 0%;
+  padding: 0%;
+}

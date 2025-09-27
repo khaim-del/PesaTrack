@@ -1,0 +1,74 @@
+.section{
+  max-width: 400px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  display: inline-block;
+}
+.btn.primary {
+  background: #ffd700;
+  color: #000;
+}
+.btn.secondary {
+  border: 2px solid #ffd700;
+  color: #000;
+}
+.btn.big {
+  font-size: 1.2rem;
+  padding: 15px 40px;
+  background: #fff;
+  color: #000;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Inputs */
+input, select, textarea {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 90%;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #ffd700;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+}
+
+/* Errors */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Password toggle */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-container input {
+  flex: 1;
+  padding-right: 40px;
+}
+.toggle-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}

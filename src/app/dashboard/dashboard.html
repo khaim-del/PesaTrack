@@ -1,0 +1,64 @@
+<div class="dashboard">
+
+  <!-- 🔹 Top Navigation -->
+  <nav class="dashboard-nav">
+    <div *ngIf="!folderOpen && !settingsOpen" class="profile-card">
+      <img [src]="userPhoto" alt="Profile Photo" class="profile-photo" />
+      <div class="info">
+        <h2>{{ userName }}</h2>
+        <p>{{ userEmail }}</p>
+      </div>
+    </div><br>
+
+    <div class="nav-actions">
+      <button class="btn-outline" (click)="goToSettings()">⚙ Settings</button>
+      <button class="btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <hr *ngIf="!folderOpen && !settingsOpen" />
+
+  <!-- 🔹 Folder List (hidden when in settings or folder view) -->
+  <div class="folder-list" *ngIf="authUser && !folderOpen && !settingsOpen; else loading">
+    <h3>Your Folders</h3>
+
+    <div class="search-container">
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        placeholder="Search folders..." 
+        class="search-box"
+      />
+      <button
+        *ngIf="searchQuery"
+        typue="button"
+        class="clear-btn"
+        (click)="searchQuery = ''"
+        aria-label="clear search"
+        >
+        ❌
+      </button>
+    </div>
+
+    <ul>
+      <li *ngFor="let folder of filteredFolders">
+        <a [routerLink]="['/dashboard/folder', folder.id]">
+          📁 {{ folder.id }}
+          <span class="total">Total: {{ folderTotals[folder.id] || 0 }}</span>
+        </a>
+      </li>
+    </ul>
+
+    <button class="btn-primary" *ngIf="!isTfc" (click)="createFolder()">+ Create Folder</button>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading folders...</p>
+  </ng-template>
+
+  <!-- 🔹 Child route content (settings, folder view, etc.) -->
+  <div class="child-view" *ngIf="folderOpen || settingsOpen">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

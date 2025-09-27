@@ -1,0 +1,98 @@
+.folder-view {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.folder-view h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.folder-view p {
+  margin: 0.3rem 0 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.folder-view button {
+  background: #3498db;
+  color: white;
+  margin: 0.2rem 0.3rem;
+}
+
+.folder-view button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 🔹 Back button */
+.folder-view > button:first-child {
+  background: #7f8c8d;
+}
+
+/* 🔹 Add entry form */
+.add-entry {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+}
+
+.add-entry input {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.add-entry button {
+  background: #27ae60;
+  color: white;
+}
+
+/* 🔹 Entries list */
+.folder-view ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.folder-view li {
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f4f6f8;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-view li:nth-child(odd) {
+  background: #ecf0f1;
+}
+
+.folder-view li button {
+  background: #e74c3c;
+}

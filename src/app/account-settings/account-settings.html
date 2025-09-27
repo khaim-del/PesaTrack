@@ -1,0 +1,207 @@
+<div class="settings">
+  <!-- Back Button -->
+  <button class="btn-back" (click)="goBack()">⬅ Back</button>
+
+  <!-- Page Title -->
+  <h2>Account Settings</h2>
+
+  <!-- Profile Photo -->
+  <div class="photo-preview">
+    <img [src]="userPhoto" alt="Profile Photo" />
+  </div>
+
+  <div class="info">
+    <h2>{{ displayName }}</h2>
+    <h3>{{ userEmail }}</h3>
+  </div>
+
+  <hr class="divider" />
+<div class="fill">
+  <!-- Change Photo -->
+  <label>
+    Change Photo:
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+  </label>
+
+  <!-- Name -->
+  <label>
+    Change Name:
+    <input type="text" [(ngModel)]="displayName" placeholder="Enter your name" />
+  </label>
+
+  <!-- Password -->
+  <label>
+  <button 
+    type="button" 
+    class="dropdown-toggle" 
+    (click)="showChangePassword = !showChangePassword"
+  >
+    {{ showChangePassword ? '🔽 Change Password' : '🔼 Change Password' }}
+  </button>
+
+  <div *ngIf="showChangePassword" class="password-fields">
+    
+    <label>
+      Current Password:
+      <div class="password-container">
+        <input
+          [type]="showCurrentPassword ? 'text' : 'password'"
+          [(ngModel)]="currentPassword"
+          name="currentPassword"
+          placeholder="Enter current password"
+          required
+        />
+        <button
+          type="button"
+          class="toggle-btn"
+          (click)="showCurrentPassword = !showCurrentPassword"
+        >
+          {{ showCurrentPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+    </label>
+    
+    <label>
+      New Password:
+      <div class="password-container">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="newPassword"
+          name="newPassword"
+          placeholder="Enter new password"
+          required
+          minlength="6"
+          #passwordInput="ngModel"
+        />
+        <button
+          type="button"
+          class="toggle-btn"
+          (click)="showPassword = !showPassword"
+        >
+          {{ showPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <!-- Password validation messages -->
+      <div *ngIf="passwordInput.touched && passwordInput.invalid" class="error">
+        <div *ngIf="passwordInput.errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="passwordInput.errors?.['minlength']">
+          Password must be at least 6 characters.
+        </div>
+      </div>
+    </label>
+
+    <label>
+      Confirm Password:
+      <div class="password-container">
+        <input
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm new password"
+          required
+          #confirmPasswordInput="ngModel"
+        />
+        <button
+          type="button"
+          class="toggle-btn"
+          (click)="showConfirmPassword = !showConfirmPassword"
+        >
+          {{ showConfirmPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <!-- Match validation -->
+      <div
+        *ngIf="
+          confirmPasswordInput.touched &&
+          confirmPassword &&
+          confirmPassword !== newPassword
+        "
+        class="error"
+      >
+        Passwords do not match.
+      </div>
+    </label>
+
+    <!-- Save Password Button -->
+    <button
+      type="button"
+      class="save-password-btn"
+      (click)="changePassword()"
+      [disabled]="
+        !newPassword ||
+        !confirmPassword ||
+        newPassword !== confirmPassword ||
+        passwordInput.invalid
+      "
+    >
+      Save New Password
+    </button>
+  </div>
+  </label>
+  </div>
+
+  <!-- Save Button -->
+  <button
+    class="btn-primary"
+    [disabled]="
+      !displayName ||
+      (newPassword && (newPassword.length < 6 || newPassword !== confirmPassword))
+    "
+    (click)="saveChanges()"
+  >
+    💾 Save Changes
+  </button>
+
+  <!-- Messages -->
+  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <hr class="divider" />
+
+  <!-- Delete Account Section -->
+  <!-- 🔽 Delete Account Section -->
+  <div class="delete-account-section">
+    <button
+      type="button"
+      class="dropdown-toggle danger"
+      (click)="showDeleteAccount = !showDeleteAccount"
+    >
+      {{ showDeleteAccount ? '🔽 Hide Delete Account' : '⚠️ Delete Account' }}
+    </button>
+
+    <div *ngIf="showDeleteAccount" class="delete-fields">
+      <p class="warning-text">
+        ⚠️ Deleting your account is permanent and cannot be undone. All your data
+        will be lost.
+      </p>
+
+      <label>
+        Confirm Email:
+        <input
+          type="email"
+          [(ngModel)]="confirmEmail"
+          name="confirmEmail"
+          placeholder="Enter your email to confirm"
+          required
+        />
+      </label>
+
+      <button
+        type="button"
+        class="delete-btn"
+        (click)="confirmDeleteAccount()"
+        [disabled]="!confirmEmail || confirmEmail !== authUser?.email"
+      >
+        Permanently Delete Account
+      </button>
+
+      <div *ngIf="deleteError" class="error">{{ deleteError }}</div>
+      <div *ngIf="deleteSuccess" class="success">{{ deleteSuccess }}</div>
+    </div>
+  </div>
+
+</div>
